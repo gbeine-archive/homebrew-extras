@@ -2,7 +2,7 @@ require 'formula'
 
 class SaneFrontends < Formula
   homepage 'http://www.sane-project.org/'
-  url 'http://fossies.org/linux/misc/sane-frontends-1.0.24.tar.gz'
+  url 'http://fossies.org/linux/misc/sane-frontends-1.0.14.tar.gz'
   sha1 '063e11df3e32d7a43161fd37026a4dc601d5482d'
 
   depends_on 'pkg-config' => :build
