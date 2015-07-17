@@ -1,16 +1,34 @@
 require 'formula'
 
-class OracleDownloadStrategy < CurlDownloadStrategy
+class OracleDownloadStrategy < AbstractFileDownloadStrategy
 # Due to license reasons Oracle's client binaries cannot be loaded via curl
-  def curl(*args)
-    file = "#{HOMEBREW_CACHE}/#{args[0]}"
-    unless File.exist?(file)
-      print "Please load the file #{file} from http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html and place it in #{HOMEBREW_CACHE}\n"
-      exit 1
-    end
-    args[0] = "file://#{file}"
+  attr_reader :tarball_path, :temporary_path
+  def initialize(name, resource)
     super
+    @tarball_path = HOMEBREW_CACHE.join("#{name}-#{version}#{ext}")
+    @temporary_path = Pathname.new("#{cached_location}.incomplete")
   end
+  
+  def fetch
+    file = "#{HOMEBREW_CACHE}/#{resource.url}"
+    unless cached_location.exist?
+      unless File.exist?(file)
+        print "Please load the file #{resource.url} from http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html and place it in #{HOMEBREW_CACHE}\n"
+        exit 1
+      end
+      File.rename file, cached_location
+    end
+  end
+
+  def cached_location
+    tarball_path
+  end
+
+  def clear_cache
+    super
+    rm_rf(temporary_path)
+  end
+
 end
 
 class OracleClient < Formula
@@ -36,10 +54,6 @@ class OracleClient < Formula
   option "with-jdbc", "Install extended JDBC support"
   option "with-sqlplus", "Install sqlplus command line client"
   option "with-sdk", "Install software development kit"
-
-  def pre_install
-exit 1
-  end
 
   def install
     if build.with? "jdbc"
