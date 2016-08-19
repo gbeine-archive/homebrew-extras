@@ -3,7 +3,7 @@ require 'formula'
 class SaneFrontends < Formula
   homepage 'http://www.sane-project.org/'
   url 'http://fossies.org/linux/misc/sane-frontends-1.0.14.tar.gz'
-  sha1 '063e11df3e32d7a43161fd37026a4dc601d5482d'
+  sha1 'e7839dac1b70b5bb39124615aba8a136f5275d0e78bafd3d52ed76964ffea4a9'
 
   depends_on 'pkg-config' => :build
   depends_on 'gtk+'

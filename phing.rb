@@ -5,7 +5,7 @@ require File.expand_path("../../../homebrew/homebrew-php/Requirements/phar-requi
 class Phing < Formula
   homepage 'http://phing.info'
   url 'http://www.phing.info/get/phing-latest.phar'
-  sha1 '8e5bf0b392e2f226039365d8243c7e7ebb7d1ca2'
+  sha1 'd93b31da0d9a2634089beab1ea776e53b4ee809395334f38529e8acdf4b88735'
   version 'latest'
 
   depends_on PhpMetaRequirement
