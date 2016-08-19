@@ -34,21 +34,21 @@ end
 class OracleClient < Formula
   homepage "http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html"
   url "instantclient-basic-macos.x64-12.1.0.2.0.zip", :using => OracleDownloadStrategy
-  sha1 "ecbf84ff011fcd8981c2cd9355f958ee42b2e452ebaad2d42df7b226903679cf"
+  sha256 "ecbf84ff011fcd8981c2cd9355f958ee42b2e452ebaad2d42df7b226903679cf"
 
   resource "jdbc" do
     url "instantclient-jdbc-macos.x64-12.1.0.2.0.zip", :using => OracleDownloadStrategy
-    sha1 "996a44db0b09080bebc5b73ddadb0636d3e8d9681ed500c23d060b6708b6a0de"
+    sha256 "996a44db0b09080bebc5b73ddadb0636d3e8d9681ed500c23d060b6708b6a0de"
   end
 
   resource "sdk" do
     url "instantclient-sdk-macos.x64-12.1.0.2.0.zip", :using => OracleDownloadStrategy
-    sha1 "63582d9a2f4afabd7f5e678c39bf9184d51625c61e67372acdbc7b42ed8530ac"
+    sha256 "63582d9a2f4afabd7f5e678c39bf9184d51625c61e67372acdbc7b42ed8530ac"
   end
 
   resource "sqlplus" do
     url "instantclient-sqlplus-macos.x64-12.1.0.2.0.zip", :using => OracleDownloadStrategy
-    sha1 "d1a83949aa742a4f7e5dfb39f5d2b15b5687c87edf7d998fe6caef2ad4d9ef6d"
+    sha256 "d1a83949aa742a4f7e5dfb39f5d2b15b5687c87edf7d998fe6caef2ad4d9ef6d"
   end
 
   option "with-jdbc", "Install extended JDBC support"
